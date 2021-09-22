@@ -23,8 +23,6 @@ genius = lg.Genius(GENIUS_ACCESS, skip_non_songs=True, excluded_terms=["(Remix)"
 
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-vn'}
 
-GAYZAO_rando = {1:'o gay', 2:'o viado', 3:'o gayzao', 4:'o viadinho', 5:'o pato', 6:'o meu patinho', 7:'a bixa', 8:'a princesa', 9:'o mestre', 10:'o fodao', 11:'o boiola', 12:'a bixona'}
-
 briefs = {'Player':{ 
             'play':'Plays song to connected channel',
             'pause':'Pauses the song currently playing',
@@ -51,8 +49,6 @@ briefs = {'Player':{
           }
 
 msgs = ['nao to tocando nada agora','nao to conectado...','to num outro canal bobao, nao da pra voce me manda comando nao']
-
-XGMTS = {1:'seu pedaco de bosta', 2:'tamo junto', 3:'se eh foda', 4:'toma vergonha na cara', 5:'chupa minhas bolas', 6:'piru pequeno', 7:'vem x1 noob', 8:'noob', 9:'se eh um pato', 10:'tu eh foda mano', 11: 'vamo q vamo'}
 
 queue = {}
 
@@ -170,7 +166,7 @@ async def connect_and_play(ctx, *arg):
       else:
         note = '🎬'
 
-      await ctx.send(embed=discord.Embed(description="{} {} pediu pra tocar:\n".format(GAYZAO_rando[n], ctx.message.author.mention) + "[" + "**" + get_video_title(url) + "**" + "]" + "(" + url + ") " + note))
+      await ctx.send(embed=discord.Embed(description="{} {} pediu pra tocar:\n".format("O/A ", ctx.message.author.mention) + "[" + "**" + get_video_title(url) + "**" + "]" + "(" + url + ") " + note))
 
       ctx.voice_client.play(queue[ctx.guild.id][0]['source'],after=lambda e: play_next(ctx))
       ctx.voice_client.source = discord.PCMVolumeTransformer(ctx.voice_client.source, 1.0)
@@ -206,7 +202,7 @@ async def next(ctx):
       else:
         note = '🎬'
 
-      await ctx.send(embed=discord.Embed(description="{} {} pediu pra skipa, agora tocando:\n".format(GAYZAO_rando[n], ctx.message.author.mention) + "[" + "**" + get_video_title(queue[ctx.guild.id][0]['url']) + "**" + "]" + "(" + queue[ctx.guild.id][0]['url'] + ") " + note))
+      await ctx.send(embed=discord.Embed(description="{} {} pediu pra skipa, agora tocando:\n".format("O/A ", ctx.message.author.mention) + "[" + "**" + get_video_title(queue[ctx.guild.id][0]['url']) + "**" + "]" + "(" + queue[ctx.guild.id][0]['url'] + ") " + note))
     else:
       await ctx.send(msgs[0])
 
@@ -336,7 +332,7 @@ async def playlist(ctx, arg):
       else:
         note = '🎬'
 
-      await ctx.send(embed=discord.Embed(description="{} {} pediu pra tocar:\n".format(GAYZAO_rando[n], ctx.message.author.mention) + "[" + "**" + get_video_title(queue[ctx.guild.id][0]['url']) + "**" + "]" + "(" + queue[ctx.guild.id][0]['url'] + ") " + note))
+      await ctx.send(embed=discord.Embed(description="{} {} pediu pra tocar:\n".format("O/A ", ctx.message.author.mention) + "[" + "**" + get_video_title(queue[ctx.guild.id][0]['url']) + "**" + "]" + "(" + queue[ctx.guild.id][0]['url'] + ") " + note))
 
       ctx.voice_client.play(queue[ctx.guild.id][0]['source'],after=lambda e: play_next(ctx))
       ctx.voice_client.source = discord.PCMVolumeTransformer(ctx.voice_client.source, 1.0)
@@ -440,7 +436,7 @@ async def default(ctx):
 async def xinga(ctx, arg):
   n = random.randint(1,11)
 
-  await ctx.send('{} {}'.format(arg, XGMTS[n]))
+  await ctx.send('{} {}'.format(arg, "cool"))
 
 #@bot.command()
 #async def help(ctx):
