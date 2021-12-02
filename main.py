@@ -151,6 +151,7 @@ async def connect_and_play(ctx, *arg):
     # initializes pafy object
     try:
       song = pafy.new(url)
+      print(song)
     except:
       await ctx.send(embed=discord.Embed(description="Error has occured, please try again"))
       return
